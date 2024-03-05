@@ -1,0 +1,9 @@
+class TeamMember:
+    def __init__(self, memberid=0, minDailyHours=0, maxDailyHours=0, ceremonyHours=0, daysOff=0):
+        self.memberId = memberid
+        self.minDailyHours = minDailyHours
+        self.maxDailyHours = maxDailyHours
+        self.ceremonyHours = ceremonyHours
+        self.daysOff = daysOff
+if __name__ == "__main__":
+  pass
