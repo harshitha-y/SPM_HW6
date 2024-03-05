@@ -1,0 +1,13 @@
+def calculateAvgVelocity(Sprint_points):
+    total_points=0
+    for i in Sprint_points:
+        total_points+=int(i)
+    return(total_points/len(Sprint_points))
+def FeatureOneInputs():
+    sp=input("enter story points for each sprint (seperated by space)\n")
+    Sprint_points=sp.split(" ")
+    return Sprint_points
+if __name__ == "__main__":
+    
+       Sprint_points = FeatureOneInputs()
+       avg_velocity=calculateAvgVelocity(Sprint_points)
