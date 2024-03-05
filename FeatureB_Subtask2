@@ -1,0 +1,23 @@
+class TeamMember:
+    def __init__(self, memberid=0, minDailyHours=0, maxDailyHours=0, ceremonyHours=0, daysOff=0):
+        self.memberId = memberid
+        self.minDailyHours = minDailyHours
+        self.maxDailyHours = maxDailyHours
+        self.ceremonyHours = ceremonyHours
+        self.daysOff = daysOff
+        
+def FeatureTwoInputs():
+    sprintDays = int(input("\n\nEnter the length ofsprint: "))
+    memberNum = int(input("Enter the number of team members: "))
+    teamMemberDetails = []
+    for i in range(1, memberNum+1):
+        print("\nMember " + str(i))
+        memberid = int(input("Member Id: "))
+        hoursPerDay = input("Hours Per Day Availability as a range (separated by '-' eg. 4-7): ")
+        sprintCeremonyTime = float(input("Hours spent in Sprint Ceremonies daily: "))
+        daysOff = float(input("Days Off through the entire sprint: "))
+        minHours = float(hoursPerDay.split("-")[0].strip())
+        maxHours = float(hoursPerDay.split("-")[1].strip())
+        member = TeamMember(memberid, minHours, maxHours, sprintCeremonyTime, daysOff)
+        teamMemberDetails.append(member)
+    return(teamMemberDetails)
