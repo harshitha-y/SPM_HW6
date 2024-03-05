@@ -1,0 +1,6 @@
+def FeatureOneInputs():
+    sp=input("enter story points for each sprint (seperated by space)\n")
+    Sprint_points=sp.split(" ")
+    return Sprint_points
+if __name__ == "__main__":
+       Sprint_points = FeatureOneInputs()
