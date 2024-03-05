@@ -1,0 +1,38 @@
+class TeamMember:
+    def __init__(self, memberid=0, minDailyHours=0, maxDailyHours=0, ceremonyHours=0, daysOff=0):
+        self.memberId = memberid
+        self.minDailyHours = minDailyHours
+        self.maxDailyHours = maxDailyHours
+        self.ceremonyHours = ceremonyHours
+        self.daysOff = daysOff
+        
+    def calculateIndividualCapacity(self, members, sprintLength):
+         
+        minCapacities = [0.0] * len(members)
+        maxCapacities = [0.0] * len(members)
+        for i in range(len(members)):
+            availableDays = sprintLength - members[i].daysOff
+            minAvailableHours = availableDays * (members[i].minDailyHours - members[i].ceremonyHours)
+            maxAvailableHours = availableDays * (members[i].maxDailyHours - members[i].ceremonyHours)
+            minCapacities[i] = minAvailableHours
+            maxCapacities[i] = maxAvailableHours
+        print("Sprint Length: " + str(sprintLength))
+        print("Team Size: " + str(len(members)))
+        capacities = {}
+        capacities["minimum"] = minCapacities
+        capacities["maximum"] = maxCapacities
+        self.printIndividualCapacities(members, capacities)
+        return capacities
+    
+     def calculateTeamCapacity(self, individualCapacities):
+        minTeamCapacity = 0
+        maxTeamCapacity = 0
+        minCapacities = individualCapacities["minimum"]
+        for capacity in minCapacities:
+            minTeamCapacity += capacity
+        maxCapacities = individualCapacities["maximum"]
+        for capacity in maxCapacities:
+            maxTeamCapacity += capacity
+        teamCapacityRange = str(minTeamCapacity) + " - " + str(maxTeamCapacity)
+        return teamCapacityRange
+    
